@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">iMovies FastShop</string>
+
+    <string name="FilmesString">Filmes</string>
+    <string name="LatestsString">Lançamentos</string>
+    <string name="BetterRating">Melhor Avaliação</string>
+    <string name="PopularString">Mais Populares</string>
+    <string name="NowCinemaString">Nos Cinemas Hoje</string>
+
+    <string name="SeriesString">Séries</string>
+    <string name="SeriesPopularesString">Mais Populares</string>
+    <string name="SeriesBetterRatingString">Melhor Avalição</string>
+    <string name="SeriesLatestString">Últimas</string>
+
+
+</resources>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_filmes_home"
+        android:icon="@drawable/home"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_filmes_categorias"
+        android:icon="@drawable/pesquisa"
+        android:title="Categorias" />
+
+    <item
+        android:id="@+id/navigation_filmes_favoritos"
+        android:icon="@drawable/heart_start"
+        android:title="Favoritos" />
+
+</menu>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayoutDetalhes"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fastshop.com.Layouts.ActivityFilmeDetails"
+
+    >
+
+
+
+    <ImageView
+        android:id="@+id/imageViewFilmeDetalhePoster"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/happy"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewFilmeDetalheTitulo"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Título"
+        android:textAlignment="center"
+        android:textSize="32dp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewFilmeDetalhePoster" />
+
+    <TextView
+        android:id="@+id/textViewFilmeDetalheDesc"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="Descrição do FIlme"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/textViewFilmeDetalheTitulo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewFilmeDetalheTitulo" />
+
+
+    <RatingBar
+        android:id="@+id/ratingBarMovieDetails"
+        style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+        android:layout_width="127dp"
+        android:layout_height="30dp"
+        android:isIndicator="true"
+        android:numStars="5"
+        android:stepSize="0.1"
+        tools:layout_editor_absoluteX="135dp"
+        tools:layout_editor_absoluteY="280dp" />
+
+
+
+</android.support.constraint.ConstraintLayout>
