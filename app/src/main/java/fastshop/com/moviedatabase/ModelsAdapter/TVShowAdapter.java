@@ -41,19 +41,16 @@ public class TVShowAdapter extends RecyclerView.Adapter
         FilmeViewHolder tvShowHolder = (FilmeViewHolder) holder;
 
         tvShowHolder.txtViewTitulo.setText(listShows.get(position).getName());
-
         tvShowHolder.txtViewDesc.setText(listShows.get(position).getOverview());
-
         tvShowHolder.MovieID = listShows.get(position).getId();
-
         tvShowHolder.tipoValor =  FilmeViewHolder.Tipo.TVShow.ordinal();
-
         tvShowHolder.ratingBar.setNumStars(5);
         tvShowHolder.ratingBar.setRating(listShows.get(position).getVoteAverage().floatValue()/2);
 
         Picasso.with(context).
                 load("https://image.tmdb.org/t/p/w500/"+listShows.get(position).getPosterPath())
                 .into(tvShowHolder.imageViewPoster);
+
 
     }
 

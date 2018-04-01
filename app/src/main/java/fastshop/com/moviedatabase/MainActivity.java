@@ -8,19 +8,29 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 
-import fastshop.com.moviedatabase.Layouts.FragmentFilmesHome;
+
+import java.util.ArrayList;
+
+import fastshop.com.moviedatabase.Layouts.FragmentCategorias;
+import fastshop.com.moviedatabase.Layouts.FragmentHome;
+import fastshop.com.moviedatabase.Models.Filme;
+import fastshop.com.moviedatabase.Models.TVShow;
 
 public class MainActivity extends FragmentActivity  implements BottomNavigationView.OnNavigationItemSelectedListener{
+
+    public static final ArrayList<Filme> favoritosFilmes = null;
+    public static final ArrayList<TVShow> favoritosShows = null ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         BottomNavigationView navigation =  findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(this);
 
-        loadFragment(new FragmentFilmesHome());
+        loadFragment(new FragmentHome());
     }
 
     public boolean loadFragment(Fragment frag)
@@ -41,13 +51,13 @@ public class MainActivity extends FragmentActivity  implements BottomNavigationV
         switch (item.getItemId())
         {
             case R.id.navigation_filmes_home:
-                fragment = new FragmentFilmesHome();
+                fragment = new FragmentHome();
                 break;
             case R.id.navigation_filmes_categorias:
-                fragment = new FragmentFilmesHome();
+                fragment = new FragmentCategorias();
                 break;
             case R.id.navigation_filmes_favoritos:
-                fragment = new FragmentFilmesHome();
+                fragment = new FragmentHome();
                 break;
         }
         return loadFragment(fragment);

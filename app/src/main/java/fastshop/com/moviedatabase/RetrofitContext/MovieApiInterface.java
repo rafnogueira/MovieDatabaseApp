@@ -3,6 +3,7 @@ package fastshop.com.moviedatabase.RetrofitContext;
 
 import fastshop.com.moviedatabase.Models.Filme;
 import fastshop.com.moviedatabase.Models.FilmeResponse;
+import fastshop.com.moviedatabase.Models.TVShow;
 import fastshop.com.moviedatabase.Models.TVShowResponse;
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -33,8 +34,7 @@ public interface  MovieApiInterface
     @GET("tv/top_rated")
     Call<TVShowResponse> getSeriesRating(@Query("api_key") String apiKey);
 
-
     @GET("tv/{tv_id}")
-    Call<TVShowResponse> getSeriesRating(@Path("tv_id") int tv_id, @Query("api_key") String apiKey);
+    Call<TVShow> getShowDetails(@Path("tv_id") int tv_id, @Query("api_key") String apiKey);
 
 }

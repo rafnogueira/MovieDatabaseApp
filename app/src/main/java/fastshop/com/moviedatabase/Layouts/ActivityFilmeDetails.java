@@ -2,18 +2,25 @@ package fastshop.com.moviedatabase.Layouts;
 
 
 import android.app.Activity;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+import com.squareup.picasso.Target;
 
 import fastshop.com.moviedatabase.Models.Filme;
+import fastshop.com.moviedatabase.Models.TVShow;
 import fastshop.com.moviedatabase.R;
 import fastshop.com.moviedatabase.RetrofitContext.MovieApiInterface;
 import fastshop.com.moviedatabase.RetrofitContext.MovieApiService;
+import fastshop.com.moviedatabase.utilidades.BlurImage;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -21,45 +28,72 @@ import retrofit2.Response;
 
 public class ActivityFilmeDetails extends Activity implements View.OnClickListener{
 
-
-    ImageView imgViewPoster = null;
-    TextView txtViewTitulo = null;
+    ImageView imgViewCapa = null;
+    TextView txtViewTituloPoster = null;
     TextView txtViewFilmeDesc = null;
+    RatingBar ratingBar = null;
+    FrameLayout poster = null;
 
-
+    private int BLUR_PRECENTAGE = 4;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_filmes_details);
 
+        setContentView(R.layout.activity_tvshow_details);
 
-        imgViewPoster = (ImageView) findViewById(R.id.imageViewFilmeDetalhePoster);
-        txtViewTitulo = (TextView) findViewById(R.id.textViewFilmeDetalheTitulo);
+        imgViewCapa = (ImageView) findViewById(R.id.imageViewFilmeDetalhePoster);
+        txtViewTituloPoster = (TextView) findViewById(R.id.txtViewTVShowDetailsTituloPoster);
         txtViewFilmeDesc = (TextView) findViewById(R.id.textViewFilmeDetalheDesc);
+        ratingBar = (RatingBar) findViewById(R.id.ratingBarTVShowDetalhes);
+        poster = (FrameLayout) findViewById(R.id.frameLayoutTVShowPoster);
 
         pesquisarFilmeDetalhes(getIntent().getExtras().getInt("MovieID"));
-
 
     }
 
     @Override
     public void onClick(View v) {
 
-
     }
 
-    public void setDadosInterface(Filme filme)
+    public void setDadosInterface(TVShow tvShow)
     {
-
-        if(filme == null)
+        //Verificação se encontrou o filme ou série
+        if(tvShow == null)
         {
-            Toast.makeText(this, "Erro", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Erro nenhum dado recebido", Toast.LENGTH_SHORT).show();
         }else{
-            Picasso.with(this).load("https://image.tmdb.org/t/p/w500/"+filme.getPosterPath()).into(imgViewPoster);
-            txtViewTitulo.setText(filme.getTitle());
-            txtViewFilmeDesc.setText(filme.getOverview());
+
+            txtViewTituloPoster.setText(tvShow.getName());
+            txtViewFilmeDesc.setText(tvShow.getOverview());
+            ratingBar.setMax(5);
+            ratingBar.setRating(tvShow.getVoteAverage().floatValue()/2);
+
+            //código que cria o efeito na imagem de poster do fundo, atrás da imagem da capa da série/tvShow
+            Target targetPoster = new Target() {
+                @Override
+                public void onBitmapLoaded(Bitmap bitmap, Picasso.LoadedFrom from) {
+                    poster.setBackground(BlurImage.fastblur(bitmap, 1f,
+                            BLUR_PRECENTAGE));
+                }
+                @Override
+                public void onBitmapFailed(Drawable errorDrawable) {
+                    imgViewCapa.setImageResource(R.mipmap.ic_launcher);
+                }
+                @Override
+                public void onPrepareLoad(Drawable placeHolderDrawable) {
+
+                }
+            };
+
+
+            poster.setTag(targetPoster);
+            Picasso.with(this).load("https://image.tmdb.org/t/p/w500/"+tvShow.getBackdropPath()).into(targetPoster);
+
+            Picasso.with(this).load("https://image.tmdb.org/t/p/w500/"+tvShow.getPosterPath()).into(imgViewCapa);
+
         }
 
     }
@@ -67,19 +101,22 @@ public class ActivityFilmeDetails extends Activity implements View.OnClickListen
     public void pesquisarFilmeDetalhes(int id)
     {
         MovieApiInterface interfaceServico = MovieApiService.getClient().create(MovieApiInterface.class);
-        Call<Filme> chamadaAPI = interfaceServico.getMovieDetails(id,  MovieApiService.API_KEY);
-        chamadaAPI.enqueue(new Callback<Filme>() {
+
+        Call<TVShow> chamada = interfaceServico.getShowDetails(id, MovieApiService.API_KEY);
+        chamada.enqueue(new Callback<TVShow>() {
             @Override
-            public void onResponse(Call<Filme> call, Response<Filme> response) {
-                Filme filme = response.body();
-                setDadosInterface(filme);
+            public void onResponse(Call<TVShow> call, Response<TVShow> response) {
+                TVShow tvShow = response.body();
+                setDadosInterface(tvShow);
             }
 
             @Override
-            public void onFailure(Call<Filme> call, Throwable t) {
+            public void onFailure(Call<TVShow> call, Throwable t) {
 
             }
         });
 
+
     }
+
 }

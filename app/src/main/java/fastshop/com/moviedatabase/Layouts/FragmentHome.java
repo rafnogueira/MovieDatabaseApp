@@ -26,14 +26,14 @@ import retrofit2.Callback;
 import retrofit2.Response;
 
 
-public class FragmentFilmesHome extends Fragment {
+public class FragmentHome extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable final ViewGroup container, Bundle savedInstanceState) {
 
         // Instanciação dos ponteiros e manipulação dos dados com casting
-        View view = inflater.inflate(R.layout.fragment_filmes_home, null);
+        View view = inflater.inflate(R.layout.fragment_home, null);
 
 
         //Criação do objeto para chamada to tipo FilmeResponse

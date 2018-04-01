@@ -5,56 +5,118 @@
     android:id="@+id/constraintLayoutDetalhes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="fastshop.com.Layouts.ActivityFilmeDetails">
+    tools:context="fastshop.com.moviedatabase.Layouts.ActivityTVShowDetails"
+    tools:layout_editor_absoluteY="25dp">
 
 
-    <ImageView
-        android:id="@+id/imageViewFilmeDetalhePoster"
+    <FrameLayout
+        android:id="@+id/frameLayoutTVShowPoster"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:src="@drawable/happy"
+        android:layout_height="200dp"
+        android:background="@color/colorPosterBackground"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <TextView
-        android:id="@+id/textViewFilmeDetalheTitulo"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="Título"
-        android:textAlignment="center"
-        android:textSize="32dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageViewFilmeDetalhePoster" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textViewFilmeDetalheDesc"
+            <RatingBar
+                android:id="@+id/ratingBarTVShowDetalhes"
+                style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+                android:layout_width="wrap_content"
+                android:layout_height="20dp"
+                android:layout_marginBottom="8dp"
+                android:layout_marginStart="16dp"
+                android:isIndicator="true"
+                android:numStars="5"
+                android:stepSize="0.1"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewFilmeDetalhePoster" />
+
+            <ImageView
+                android:id="@+id/imageViewFilmeDetalhePoster"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:src="@drawable/happy"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/txtViewTVShowDetailsTituloPoster"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="16dp"
+                android:text="TextView"
+                android:textColor="@android:color/background_light"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                android:typeface="sans"
+                app:layout_constraintBottom_toTopOf="@+id/ratingBarTVShowDetalhes"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imageViewFilmeDetalhePoster"
+                tools:text="@string/app_name" />
+
+            <ImageButton
+                android:id="@+id/imageButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/diamond"
+                tools:layout_editor_absoluteX="312dp"
+                tools:layout_editor_absoluteY="10dp" />
+        </android.support.constraint.ConstraintLayout>
+
+    </FrameLayout>
+
+    <ScrollView
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="24dp"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="Descrição da Série"
-        android:textAlignment="center"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:typeface="sans"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/textViewFilmeDetalheTitulo"
-        app:layout_constraintTop_toBottomOf="@+id/textViewFilmeDetalheTitulo" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/frameLayoutTVShowPoster">
 
-    <RatingBar
-        android:id="@+id/ratingBarTvShowDetails"
-        style="@android:style/Widget.DeviceDefault.Light.RatingBar.Small"
+
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp">
+
+            <TextView
+                android:id="@+id/textViewFilmeDetalheDesc"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:text="Descrição da Série"
+                android:textAlignment="center"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:typeface="sans"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </android.support.constraint.ConstraintLayout>
+    </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton3"
         android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginTop="8dp"
-        android:isIndicator="true"
-        android:numStars="5"
-        android:stepSize="0.1" />
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        android:src="@drawable/heart_start"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="438dp"
+        android:focusable="true" />
 
 
 </android.support.constraint.ConstraintLayout>

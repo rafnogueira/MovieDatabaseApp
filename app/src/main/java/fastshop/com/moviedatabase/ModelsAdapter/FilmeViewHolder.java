@@ -58,8 +58,7 @@ public class FilmeViewHolder extends RecyclerView.ViewHolder  implements View.On
         {
             intent = new Intent(view.getContext(), ActivityFilmeDetails.class);
         }else{
-            //intent = new Intent(view.getContext(), ActivityTVShowDetails.class);
-            intent = new Intent(view.getContext(), ActivityFilmeDetails.class);
+            intent = new Intent(view.getContext(), ActivityTVShowDetails.class);
         }
 
         intent.putExtra("MovieID", MovieID);
