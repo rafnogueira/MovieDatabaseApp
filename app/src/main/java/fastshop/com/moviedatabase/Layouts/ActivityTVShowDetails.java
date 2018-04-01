@@ -3,7 +3,6 @@ package fastshop.com.moviedatabase.Layouts;
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.view.View;
@@ -16,8 +15,6 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
-
-import java.net.URI;
 
 import fastshop.com.moviedatabase.MainActivity;
 import fastshop.com.moviedatabase.Models.TVShow;
@@ -34,9 +31,11 @@ public class ActivityTVShowDetails extends Activity implements View.OnClickListe
 
     ImageView imgViewCapa = null;
     TextView txtViewTituloPoster = null;
-    TextView txtViewFilmeDesc = null;
+    TextView txtViewDesc = null;
     RatingBar ratingBar = null;
     FrameLayout poster = null;
+    FloatingActionButton fabAddFavoritos = null;
+    FloatingActionButton fabRemoveFavoritos = null;
 
     //Ponteiro para o filme que está sendo tratado para ser utilizado posteriormente para adicionar aos favoritos
     TVShow tvShowPointer = null;
@@ -50,30 +49,61 @@ public class ActivityTVShowDetails extends Activity implements View.OnClickListe
 
         setContentView(R.layout.activity_tvshow_details);
 
-        imgViewCapa = (ImageView) findViewById(R.id.imageViewFilmeDetalhePoster);
-        txtViewTituloPoster = (TextView) findViewById(R.id.txtViewTVShowDetailsTituloPoster);
-        txtViewFilmeDesc = (TextView) findViewById(R.id.textViewFilmeDetalheDesc);
-        ratingBar = (RatingBar) findViewById(R.id.ratingBarTVShowDetalhes);
-        poster = (FrameLayout) findViewById(R.id.frameLayoutTVShowPoster);
+        imgViewCapa = (ImageView) findViewById(R.id.imgViewTvShowDetailsPoster);
+        txtViewTituloPoster = (TextView) findViewById(R.id.txtViewTvShowDetailsTituloPoster);
+        txtViewDesc = (TextView) findViewById(R.id.txtViewTvShowDetailsDesc);
+        ratingBar = (RatingBar) findViewById(R.id.ratingTvShowDetails);
+        poster = (FrameLayout) findViewById(R.id.frameLayoutTVShowDetailsBackgroundPoster);
 
+        fabAddFavoritos = (FloatingActionButton) findViewById(R.id.fabTVShowDetailsAddFavoritos);
+        fabAddFavoritos.setOnClickListener(this);
 
-        pesquisarFilmeDetalhes(getIntent().getExtras().getInt("MovieID"));
+        fabRemoveFavoritos = (FloatingActionButton) findViewById(R.id.fabTVShowDetailsRemoverFavoritos);
+        fabRemoveFavoritos.setOnClickListener(this);
+
+        pesquisarShowDetalhes(getIntent().getExtras().getInt("MovieID"));
 
     }
 
     @Override
     public void onClick(View view) {
 
-//        if(view.getId() == this.fabFavoritar.getId())
-//        {
-//            if(this.tvShowPointer != null)
-//            {
-//                MainActivity.favoritosShows.add(this.tvShowPointer);
-//            }else{
-//                Toast.makeText(this,  "Erro ao adicionar Favorito!", Toast.LENGTH_LONG);
-//            }
-//
-//        }
+        //Tratar eventos do botão adicionar favs
+        if(view.getId() == R.id.fabTVShowDetailsAddFavoritos)
+        {
+            if(this.tvShowPointer != null)
+            {
+                //Já contem a série adicionada na lista estática ?  senão adicionar ~~
+                if(FragmentFavoritos.favoritosShows.contains(this.tvShowPointer))
+                {
+                    Toast.makeText(this, "Já está adicionado nos favoritos ^~^ ", Toast.LENGTH_SHORT).show();
+                }else{
+                    FragmentFavoritos.favoritosShows.add(this.tvShowPointer);
+                    Toast.makeText(this, "Show adicionado aos favoritos", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(this,  "Erro ao adicionar Favorito!", Toast.LENGTH_SHORT);
+            }
+        }
+
+        //Tratar eventos do botão remover favs
+        if(view.getId() == R.id.fabTVShowDetailsRemoverFavoritos)
+        {
+            if(this.tvShowPointer != null)
+            {
+                //Já contem a série adicionada na lista estática ?  senão adicionar ~~
+                if(FragmentFavoritos.favoritosShows.contains(this.tvShowPointer))
+                {
+                    FragmentFavoritos.favoritosShows.remove(this.tvShowPointer);
+                    Toast.makeText(this, "Show removido dos favoritos", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(this, "Já está não está nos favoritos", Toast.LENGTH_SHORT).show();
+                }
+            }else{
+                Toast.makeText(this,  "Erro ao adicionar Favorito!", Toast.LENGTH_SHORT);
+            }
+        }
+
     }
 
     public void setDadosInterface(TVShow tvShow)
@@ -85,7 +115,7 @@ public class ActivityTVShowDetails extends Activity implements View.OnClickListe
         }else{
 
             txtViewTituloPoster.setText(tvShow.getName());
-            txtViewFilmeDesc.setText(tvShow.getOverview());
+            txtViewDesc.setText(tvShow.getOverview());
             ratingBar.setMax(5);
             ratingBar.setRating(tvShow.getVoteAverage().floatValue()/2);
 
@@ -108,16 +138,17 @@ public class ActivityTVShowDetails extends Activity implements View.OnClickListe
 
             poster.setTag(targetPoster);
             Picasso.with(this).load("https://image.tmdb.org/t/p/w500/"+tvShow.getBackdropPath()).into(targetPoster);
-
             Picasso.with(this).load("https://image.tmdb.org/t/p/w500/"+tvShow.getPosterPath()).into(imgViewCapa);
 
-//            fabFavoritar.setOnClickListener(this);
+            tvShowPointer = tvShow;
+
+            fabAddFavoritos.setOnClickListener(this);
 
         }
 
     }
 
-    public void pesquisarFilmeDetalhes(int id)
+    public void pesquisarShowDetalhes(int id)
     {
         MovieApiInterface interfaceServico = MovieApiService.getClient().create(MovieApiInterface.class);
 
@@ -134,8 +165,6 @@ public class ActivityTVShowDetails extends Activity implements View.OnClickListe
 
             }
         });
-
-
     }
 
 }

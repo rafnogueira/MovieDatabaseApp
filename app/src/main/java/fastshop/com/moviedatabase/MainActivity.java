@@ -12,14 +12,12 @@ import android.view.MenuItem;
 import java.util.ArrayList;
 
 import fastshop.com.moviedatabase.Layouts.FragmentCategorias;
+import fastshop.com.moviedatabase.Layouts.FragmentFavoritos;
 import fastshop.com.moviedatabase.Layouts.FragmentHome;
 import fastshop.com.moviedatabase.Models.Filme;
 import fastshop.com.moviedatabase.Models.TVShow;
 
 public class MainActivity extends FragmentActivity  implements BottomNavigationView.OnNavigationItemSelectedListener{
-
-    public static final ArrayList<Filme> favoritosFilmes = null;
-    public static final ArrayList<TVShow> favoritosShows = null ;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +55,7 @@ public class MainActivity extends FragmentActivity  implements BottomNavigationV
                 fragment = new FragmentCategorias();
                 break;
             case R.id.navigation_filmes_favoritos:
-                fragment = new FragmentHome();
+                fragment = new FragmentFavoritos();
                 break;
         }
         return loadFragment(fragment);
