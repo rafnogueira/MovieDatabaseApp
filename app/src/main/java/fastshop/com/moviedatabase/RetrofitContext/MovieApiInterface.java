@@ -1,8 +1,12 @@
 package fastshop.com.moviedatabase.RetrofitContext;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 import fastshop.com.moviedatabase.Models.Filme;
 import fastshop.com.moviedatabase.Models.FilmeResponse;
+import fastshop.com.moviedatabase.Models.Genero;
 import fastshop.com.moviedatabase.Models.TVShow;
 import fastshop.com.moviedatabase.Models.TVShowResponse;
 import retrofit2.Call;
@@ -37,4 +41,9 @@ public interface  MovieApiInterface
     @GET("tv/{tv_id}")
     Call<TVShow> getShowDetails(@Path("tv_id") int tv_id, @Query("api_key") String apiKey);
 
+    @GET("genre/movie/list")
+    Call<Genero> getGenres(@Query("api_key") String apiKey);
+
+    @GET("genre/{genre_id}/movies")
+    Call<FilmeResponse>  getMoviesByGenre(@Path("genre_id") int genre_id, @Query("api_key") String apiKey);
 }

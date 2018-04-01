@@ -200,8 +200,9 @@ public class FragmentHome extends Fragment {
 
                 ArrayList<TVShow> tvShows =  (ArrayList<TVShow>) response.body().getResults();
 
-                LinearLayoutManager layout = new LinearLayoutManager(getContext() , LinearLayoutManager.HORIZONTAL , false);
 
+//                LinearLayoutManager layout = new LinearLayoutManager(getContext() , LinearLayoutManager.HORIZONTAL , false);
+                LinearLayoutManager layout = new LinearLayoutManager(getContext());
                 rvPointer.setLayoutManager(layout);
 
                 rvPointer.setAdapter(new TVShowAdapter(getContext(),tvShows));

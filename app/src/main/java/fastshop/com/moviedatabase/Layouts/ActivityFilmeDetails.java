@@ -16,6 +16,9 @@ import com.squareup.picasso.Picasso;
 import com.squareup.picasso.Target;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
+import java.util.function.Predicate;
 
 import fastshop.com.moviedatabase.MainActivity;
 import fastshop.com.moviedatabase.Models.Filme;
@@ -39,7 +42,7 @@ public class ActivityFilmeDetails extends Activity implements View.OnClickListen
     FloatingActionButton fabRemoveFavoritos = null;
 
     //Ponteiro para o filme que está sendo tratado para ser utilizado posteriormente para adicionar aos favoritos
-    Filme filmePointer = null;
+    public static Filme filmePointer = null;
 
     private int BLUR_PRECENTAGE = 4;
 
@@ -75,11 +78,11 @@ public class ActivityFilmeDetails extends Activity implements View.OnClickListen
             if(this.filmePointer != null)
             {
                 //Já contem a série adicionada na lista estática ?  senão adicionar ~~
-                if(FragmentFavoritos.favoritosFilmes.contains(this.filmePointer))
+                if(FragmentFavoritos.getFavoritosFilmes().contains(this.filmePointer))
                 {
                     Toast.makeText(this, "Já está adicionado nos favoritos ^~^ ", Toast.LENGTH_SHORT).show();
                 }else{
-                    FragmentFavoritos.favoritosFilmes.add(this.filmePointer);
+                    FragmentFavoritos.getFavoritosFilmes().add(this.filmePointer);
                     Toast.makeText(this, "Filme adicionado aos favoritos", Toast.LENGTH_SHORT).show();
                 }
             }else{
@@ -93,13 +96,11 @@ public class ActivityFilmeDetails extends Activity implements View.OnClickListen
             if(this.filmePointer != null)
             {
                 //Já contem a série adicionada na lista estática ?  senão adicionar ~~
-                if(FragmentFavoritos.favoritosFilmes.contains(this.filmePointer))
-                {
-                    FragmentFavoritos.favoritosFilmes.remove(this.filmePointer);
-                    Toast.makeText(this, "Filme removido dos favoritos", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(this, "Já está não está nos favoritos", Toast.LENGTH_SHORT).show();
-                }
+
+                FragmentFavoritos.getFavoritosFilmes().clear();
+
+                    Toast.makeText(this, "Removido dos favoritos", Toast.LENGTH_SHORT).show();
+
             }else{
                 Toast.makeText(this,  "Erro ao adicionar Favorito!", Toast.LENGTH_SHORT);
             }

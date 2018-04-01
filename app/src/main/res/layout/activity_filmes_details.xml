@@ -11,13 +11,9 @@
 
     <FrameLayout
         android:id="@+id/frameLayoutFilmeDetailsBackgroundPoster"
-        android:layout_width="0dp"
+        android:layout_width="384dp"
         android:layout_height="200dp"
-        android:background="@color/colorPosterBackground"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
+        android:background="@color/colorPosterBackground">
 
         <android.support.constraint.ConstraintLayout
             android:layout_width="match_parent"
@@ -67,16 +63,11 @@
 
     <ScrollView
         android:id="@+id/scrollViewFilmeDetails"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="24dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/frameLayoutFilmeDetailsBackgroundPoster">
+        android:layout_width="368dp"
+        android:layout_height="241dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/fabFilmeDetailsRemoverFavoritos"
+        tools:layout_editor_absoluteX="8dp">
 
 
         <android.support.constraint.ConstraintLayout
@@ -107,29 +98,29 @@
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabFilmeDetailsRemoverFavoritos"
-        android:layout_width="60sp"
-        android:layout_height="60sp"
-        android:layout_marginBottom="16dp"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:clickable="true"
         android:focusable="true"
         android:src="@android:drawable/ic_menu_close_clear_cancel"
         app:backgroundTint="@color/colorPosterBackgroundStars"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollViewFilmeDetails"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@+id/fabFilmeDetailsAddFavoritos"
         app:rippleColor="@color/colorPosterBackgroundStars" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fabFilmeDetailsAddFavoritos"
-        android:layout_width="60sp"
-        android:layout_height="60sp"
-        android:layout_marginBottom="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_width="40sp"
+        android:layout_height="40sp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
         android:clickable="true"
         android:focusable="true"
         android:src="@android:drawable/ic_menu_add"
         app:backgroundTint="@color/colorPosterBackgroundStars"
-        app:layout_constraintBottom_toBottomOf="@+id/scrollViewFilmeDetails"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:rippleColor="@color/colorPosterBackgroundStars" />
 

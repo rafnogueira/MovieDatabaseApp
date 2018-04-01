@@ -92,13 +92,9 @@ public class ActivityTVShowDetails extends Activity implements View.OnClickListe
             if(this.tvShowPointer != null)
             {
                 //Já contem a série adicionada na lista estática ?  senão adicionar ~~
-                if(FragmentFavoritos.favoritosShows.contains(this.tvShowPointer))
-                {
-                    FragmentFavoritos.favoritosShows.remove(this.tvShowPointer);
-                    Toast.makeText(this, "Show removido dos favoritos", Toast.LENGTH_SHORT).show();
-                }else{
-                    Toast.makeText(this, "Já está não está nos favoritos", Toast.LENGTH_SHORT).show();
-                }
+                //Por enquanto apenas limpar tudo
+                    FragmentFavoritos.favoritosShows.clear();
+
             }else{
                 Toast.makeText(this,  "Erro ao adicionar Favorito!", Toast.LENGTH_SHORT);
             }

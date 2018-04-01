@@ -37,14 +37,14 @@ public class FragmentFavoritos extends android.support.v4.app.Fragment {
 
         //Layout para o recycle
 
-        LinearLayoutManager layoutFilmes = new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager layoutFilmes = new LinearLayoutManager(view.getContext());
 
         recyclerViewFilmes = view.findViewById(R.id.recyclerViewFavoritosFilmes);
         recyclerViewFilmes.setLayoutManager(layoutFilmes);
         recyclerViewFilmes.setAdapter(new FilmeAdapter(view.getContext(),  this.favoritosFilmes));
 
 
-        LinearLayoutManager layoutSeries= new LinearLayoutManager(view.getContext(), LinearLayoutManager.VERTICAL, false);
+        LinearLayoutManager layoutSeries= new LinearLayoutManager(view.getContext());
         recyclerViewShows = view.findViewById(R.id.recyclerViewFavoritosSeries);
         recyclerViewShows.setLayoutManager(layoutSeries);
         recyclerViewShows.setAdapter(new TVShowAdapter(view.getContext(),  this.favoritosShows));
@@ -54,5 +54,13 @@ public class FragmentFavoritos extends android.support.v4.app.Fragment {
         Toast.makeText(getContext(), "Series: "+ favoritosShows.size() + "\n Filmes:" + favoritosFilmes.size() , Toast.LENGTH_SHORT).show();
 
         return view;
+    }
+
+    public static ArrayList<Filme> getFavoritosFilmes() {
+        return favoritosFilmes;
+    }
+
+    public static ArrayList<TVShow> getFavoritosShows() {
+        return favoritosShows;
     }
 }

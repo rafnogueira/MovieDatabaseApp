@@ -51,7 +51,7 @@ public class FilmeViewHolder extends RecyclerView.ViewHolder  implements View.On
         Animation animationTest = AnimationUtils.loadAnimation(itemView.getContext(), android.R.anim.slide_out_right);
         itemView.startAnimation(animationTest);
 
-        Toast.makeText(itemView.getContext(), "Abrindo detalhes do filme", Toast.LENGTH_SHORT).show();
+//        Toast.makeText(itemView.getContext(), "Abrindo detalhes do filme", Toast.LENGTH_SHORT).show();
 
         Intent intent;
         if(this.tipoValor == Tipo.FILME.ordinal())
