@@ -12,6 +12,11 @@
         android:title="Categorias" />
 
     <item
+        android:id="@+id/navigation_filmes_pesquisar"
+        android:icon="@drawable/search_test"
+        android:title="Pesquisar" />
+
+    <item
         android:id="@+id/navigation_filmes_favoritos"
         android:icon="@drawable/heart_start"
         android:title="Favoritos" />

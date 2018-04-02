@@ -46,4 +46,9 @@ public interface  MovieApiInterface
 
     @GET("genre/{genre_id}/movies")
     Call<FilmeResponse>  getMoviesByGenre(@Path("genre_id") int genre_id, @Query("api_key") String apiKey);
+
+
+
+    @GET("search/movie")
+    Call<FilmeResponse>  getMoviesSearchName(@Query("api_key") String apiKey, @Query("query") String query);
 }

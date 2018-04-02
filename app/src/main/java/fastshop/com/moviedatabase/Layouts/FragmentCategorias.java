@@ -5,7 +5,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -72,12 +70,10 @@ public class FragmentCategorias extends Fragment implements OnItemSelectedListen
 
             @Override
             public void onFailure(Call<Genero> call, Throwable t) {
-
                 Toast.makeText(getContext(), "", Toast.LENGTH_SHORT).show();
 
             }
         });
-
 
 
         return view;

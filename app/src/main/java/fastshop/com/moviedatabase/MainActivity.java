@@ -9,13 +9,10 @@ import android.support.v4.app.FragmentActivity;
 import android.view.MenuItem;
 
 
-import java.util.ArrayList;
-
 import fastshop.com.moviedatabase.Layouts.FragmentCategorias;
 import fastshop.com.moviedatabase.Layouts.FragmentFavoritos;
 import fastshop.com.moviedatabase.Layouts.FragmentHome;
-import fastshop.com.moviedatabase.Models.Filme;
-import fastshop.com.moviedatabase.Models.TVShow;
+import fastshop.com.moviedatabase.Layouts.FragmentPesquisar;
 
 public class MainActivity extends FragmentActivity  implements BottomNavigationView.OnNavigationItemSelectedListener{
 
@@ -53,6 +50,9 @@ public class MainActivity extends FragmentActivity  implements BottomNavigationV
                 break;
             case R.id.navigation_filmes_categorias:
                 fragment = new FragmentCategorias();
+                break;
+            case R.id.navigation_filmes_pesquisar:
+                fragment = new FragmentPesquisar();
                 break;
             case R.id.navigation_filmes_favoritos:
                 fragment = new FragmentFavoritos();
