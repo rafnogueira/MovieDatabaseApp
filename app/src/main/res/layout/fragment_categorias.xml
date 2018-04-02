@@ -46,6 +46,7 @@
                 android:layout_marginEnd="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/textView"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/txtViewHomeLancamentos" />
@@ -54,16 +55,33 @@
                 android:id="@+id/recyclerViewCategoriasResultado"
                 android:layout_width="382dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="8dp"
+                android:layout_marginTop="32dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinnerGenreListFilmes" />
+                app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+            <TextView
+                android:id="@+id/textView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TextView"
+                tools:layout_editor_absoluteX="31dp"
+                tools:layout_editor_absoluteY="61dp" />
 
 
         </android.support.constraint.ConstraintLayout>
 
     </ScrollView>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/floatingActionButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:clickable="true"
+        app:srcCompat="@android:drawable/ic_menu_search"
+        tools:layout_editor_absoluteX="279dp"
+        tools:layout_editor_absoluteY="443dp" />
 
 
 </android.support.constraint.ConstraintLayout>
