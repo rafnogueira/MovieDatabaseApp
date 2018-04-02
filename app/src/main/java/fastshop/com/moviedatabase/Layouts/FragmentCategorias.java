@@ -49,7 +49,7 @@ public class FragmentCategorias extends Fragment implements OnItemSelectedListen
 
         final MovieApiInterface interfaceAPI = MovieApiService.getClient().create(MovieApiInterface.class);
 
-        Call<Genero> chamada = interfaceAPI.getGenres(MovieApiService.API_KEY);
+        Call<Genero> chamada = interfaceAPI.getGenres(MovieApiService.API_KEY, MovieApiService.API_LANGUAGE);
         chamada.enqueue(new Callback<Genero>() {
             @Override
             public void onResponse(Call<Genero> call, Response<Genero> response) {
@@ -89,7 +89,7 @@ public class FragmentCategorias extends Fragment implements OnItemSelectedListen
         //Toast.makeText(getContext(), "Escolhido " + generoSelected.getName() + "ID:" + generoSelected.getId(), Toast.LENGTH_LONG).show();
 
         MovieApiInterface interfaceAPI =  MovieApiService.getClient().create(MovieApiInterface.class);
-        Call<FilmeResponse> chamada = interfaceAPI.getMoviesByGenre(generoID,MovieApiService.API_KEY);
+        Call<FilmeResponse> chamada = interfaceAPI.getMoviesByGenre(generoID,MovieApiService.API_KEY, MovieApiService.API_LANGUAGE);
         chamada.enqueue(new Callback<FilmeResponse>() {
             @Override
             public void onResponse(Call<FilmeResponse> call, Response<FilmeResponse> response) {

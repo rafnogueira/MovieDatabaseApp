@@ -71,7 +71,7 @@ public class FragmentPesquisar extends Fragment implements View.OnClickListener
 
         MovieApiInterface interfaceAPI = MovieApiService.getClient().create(MovieApiInterface.class);
 
-        Call<FilmeResponse> chamada = interfaceAPI.getMoviesSearchName(MovieApiService.API_KEY, userInput);
+        Call<FilmeResponse> chamada = interfaceAPI.getMoviesSearchName(MovieApiService.API_KEY, userInput, MovieApiService.API_LANGUAGE);
 
         chamada.enqueue(new Callback<FilmeResponse>() {
             @Override

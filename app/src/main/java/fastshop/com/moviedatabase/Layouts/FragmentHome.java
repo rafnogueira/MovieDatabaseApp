@@ -64,7 +64,7 @@ public class FragmentHome extends Fragment {
 
 
         MovieApiInterface interfaceServico = MovieApiService.getClient().create(MovieApiInterface.class);
-        Call<FilmeResponse> chamada  = interfaceServico.getLatestMovies(MovieApiService.API_KEY);
+        Call<FilmeResponse> chamada  = interfaceServico.getLatestMovies(MovieApiService.API_KEY, MovieApiService.API_LANGUAGE);
         chamada.enqueue(new Callback<FilmeResponse>() {
             @Override
             public void onResponse(Call<FilmeResponse> call, Response<FilmeResponse> response) {
@@ -88,7 +88,7 @@ public class FragmentHome extends Fragment {
 
 
         MovieApiInterface interfaceServico = MovieApiService.getClient().create(MovieApiInterface.class);
-        Call<FilmeResponse> chamada  = interfaceServico.getTopRatedMovies(MovieApiService.API_KEY);
+        Call<FilmeResponse> chamada  = interfaceServico.getTopRatedMovies(MovieApiService.API_KEY , MovieApiService.API_LANGUAGE);
         chamada.enqueue(new Callback<FilmeResponse>() {
             @Override
             public void onResponse(Call<FilmeResponse> call, Response<FilmeResponse> response) {
@@ -114,7 +114,7 @@ public class FragmentHome extends Fragment {
 
 
         MovieApiInterface interfaceServico = MovieApiService.getClient().create(MovieApiInterface.class);
-        Call<FilmeResponse> chamada  = interfaceServico.getPopularMovies(MovieApiService.API_KEY);
+        Call<FilmeResponse> chamada  = interfaceServico.getPopularMovies(MovieApiService.API_KEY, MovieApiService.API_LANGUAGE);
         chamada.enqueue(new Callback<FilmeResponse>() {
             @Override
             public void onResponse(Call<FilmeResponse> call, Response<FilmeResponse> response) {
@@ -139,7 +139,7 @@ public class FragmentHome extends Fragment {
 
 
         MovieApiInterface interfaceServico = MovieApiService.getClient().create(MovieApiInterface.class);
-        Call<FilmeResponse> chamada  = interfaceServico.getNowPlaying(MovieApiService.API_KEY);
+        Call<FilmeResponse> chamada  = interfaceServico.getNowPlaying(MovieApiService.API_KEY, MovieApiService.API_LANGUAGE);
         chamada.enqueue(new Callback<FilmeResponse>() {
             @Override
             public void onResponse(Call<FilmeResponse> call, Response<FilmeResponse> response) {
@@ -166,7 +166,7 @@ public class FragmentHome extends Fragment {
 
         MovieApiInterface interfaceServico = MovieApiService.getClient().create(MovieApiInterface.class);
 
-        Call<TVShowResponse> chamada = interfaceServico.getSeriesPopular(MovieApiService.API_KEY);
+        Call<TVShowResponse> chamada = interfaceServico.getSeriesPopular(MovieApiService.API_KEY, MovieApiService.API_LANGUAGE);
         chamada.enqueue(new Callback<TVShowResponse>() {
             @Override
             public void onResponse(Call<TVShowResponse> call, Response<TVShowResponse> response) {
@@ -193,7 +193,7 @@ public class FragmentHome extends Fragment {
 
 
         MovieApiInterface interfaceServico = MovieApiService.getClient().create(MovieApiInterface.class);
-        Call<TVShowResponse> chamada = interfaceServico.getSeriesRating(MovieApiService.API_KEY);
+        Call<TVShowResponse> chamada = interfaceServico.getSeriesRating(MovieApiService.API_KEY, MovieApiService.API_LANGUAGE);
         chamada.enqueue(new Callback<TVShowResponse>() {
             @Override
             public void onResponse(Call<TVShowResponse> call, Response<TVShowResponse> response) {

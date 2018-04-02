@@ -154,7 +154,7 @@ public class ActivityFilmeDetails extends Activity implements View.OnClickListen
     {
         MovieApiInterface interfaceServico = MovieApiService.getClient().create(MovieApiInterface.class);
 
-        Call<Filme> chamada = interfaceServico.getMovieDetails(id, MovieApiService.API_KEY);
+        Call<Filme> chamada = interfaceServico.getMovieDetails(id, MovieApiService.API_KEY, MovieApiService.API_LANGUAGE);
         chamada.enqueue(new Callback<Filme>() {
             @Override
             public void onResponse(Call<Filme> call, Response<Filme> response) {

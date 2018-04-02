@@ -148,7 +148,7 @@ public class ActivityTVShowDetails extends Activity implements View.OnClickListe
     {
         MovieApiInterface interfaceServico = MovieApiService.getClient().create(MovieApiInterface.class);
 
-        Call<TVShow> chamada = interfaceServico.getShowDetails(id, MovieApiService.API_KEY);
+        Call<TVShow> chamada = interfaceServico.getShowDetails(id, MovieApiService.API_KEY, MovieApiService.API_LANGUAGE);
         chamada.enqueue(new Callback<TVShow>() {
             @Override
             public void onResponse(Call<TVShow> call, Response<TVShow> response) {
