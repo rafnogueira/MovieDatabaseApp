@@ -1,7 +1,8 @@
 # MovieDatabaseApp
 MovieDatabaseApp using web services
 
-![img](<blockquote class="imgur-embed-pub" lang="en" data-id="a/Qy6n4"><a href="//imgur.com/Qy6n4"></a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>)
-![img](https://imgur.com/a/u6Q3i)
-![img](https://imgur.com/a/u6Q3i)
-![img](https://imgur.com/a/u6Q3i)
+![Preview](https://raw.githubusercontent.com/bitsbr/MovieDatabaseApp/blob/master/image01.png)
+![Preview](https://raw.githubusercontent.com/bitsbr/MovieDatabaseApp/blob/master/image02.png)
+![Preview](https://raw.githubusercontent.com/bitsbr/MovieDatabaseApp/blob/master/image03.png)
+![Preview](https://raw.githubusercontent.com/bitsbr/MovieDatabaseApp/blob/master/image04.png)
+
